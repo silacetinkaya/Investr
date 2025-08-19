@@ -1,20 +1,20 @@
-//
-//  investrApp.swift
-//  investr
-//
-//  Created by Sıla Çetinkaya on 19.08.2025.
-//
-
 import SwiftUI
 
 @main
-struct investrApp: App {
+struct InvestrApp: App {
     let persistenceController = PersistenceController.shared
+    @AppStorage("hasOnboarded") var hasOnboarded: Bool = false
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            if hasOnboarded {
+                FixedExpenseListView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            } else {
+                OnboardingView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
         }
     }
 }
+
