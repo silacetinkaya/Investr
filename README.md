@@ -1,4 +1,5 @@
-# 🚀 Sprint 1 — Basic Setup & Data Model  
+<details>
+<summary>🚀 Sprint 1 — Basic Setup & Data Model</summary>
 
 ## 🎯 Objective  
 Set up the core structure of the iOS app, design the data model, and implement the initial user flow: onboarding + fixed expenses management.  
@@ -51,3 +52,5 @@ Set up the core structure of the iOS app, design the data model, and implement t
   - 📊 Progress indicator (green / yellow / red)  
   - 💵 Monthly overview (income, fixed expenses, spending projection)  
   - 📈 Graphs for daily spending  
+
+</details>
