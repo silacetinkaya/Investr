@@ -8,8 +8,18 @@ struct InvestrApp: App {
     var body: some Scene {
         WindowGroup {
             if hasOnboarded {
-                FixedExpenseListView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                TabView {
+                    DashboardView()
+                        .tabItem {
+                            Label("Dashboard", systemImage: "chart.pie.fill")
+                        }
+
+                    FixedExpenseListView()
+                        .tabItem {
+                            Label("Fixed Expenses", systemImage: "list.bullet")
+                        }
+                }
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             } else {
                 OnboardingView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
