@@ -54,3 +54,45 @@ Set up the core structure of the iOS app, design the data model, and implement t
   - 📈 Graphs for daily spending  
 
 </details>
+
+
+<details>
+<summary>🚀 Sprint 2 — Expense Recording & Dashboard</summary>
+
+## 🎯 Objective  
+Implement daily expense entry and dashboard with financial overview, projections, and risk indicators.  
+
+---
+
+## 🛠️ Implemented Features  
+
+### 1. Daily Expense Recording  
+- **AddDailyExpenseView**: form for amount, category, note, and date.  
+- Data saved to Core Data and instantly reflected in Dashboard.  
+
+### 2. Dashboard Overview 📊  
+- Displays **income, fixed expenses, daily spent, remaining days, and target investment**.  
+- Progress indicator with **color (green / yellow / red)** and percentage.  
+- Projection row showing **current vs. projected spending**.  
+- **Bar chart** of daily expenses (using Swift Charts).  
+
+### 3. Projection & Risk Manager ⚙️  
+- **FinanceManager service** created to calculate:  
+  - Fixed total, daily spent, remaining days  
+  - Spending projection vs. income  
+  - Risk status → *On Track / At Risk / Over Budget*  
+
+---
+
+## ✅ Acceptance Criteria  
+- Dashboard updates dynamically as daily expenses are added.  
+- Progress color and text change based on projection.  
+- Data persists with Core Data integration.  
+
+---
+
+## 🔜 Next Step (Sprint 3)  
+- **Reporting**: category breakdown (pie chart) & daily trend (line chart).  
+- **Notifications**: daily reminder to log expenses.  
+
+</details>
