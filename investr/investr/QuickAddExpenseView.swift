@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct AddDailyExpenseView: View {
+struct QuickAddExpenseView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     
     @FetchRequest(
         entity: DailyExpense.entity(),
@@ -12,18 +12,17 @@ struct AddDailyExpenseView: View {
     @State private var amount: String = ""
     @State private var category: String = ""
     @State private var note: String = ""
-    @State private var date: Date = Date()
     
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Tutar")) {
-                    TextField("Amount", text: $amount)
+                    TextField("Tutar", text: $amount)
                         .keyboardType(.decimalPad)
                 }
                 
                 Section(header: Text("Kategori")) {
-                    TextField("Category", text: $category)
+                    TextField("Kategori", text: $category)
                     
                     // 🔎 Son kullanılan kategoriler önerisi
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -34,27 +33,23 @@ struct AddDailyExpenseView: View {
                                 }
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 6)
-                                .background(Capsule().fill(Color.blue.opacity(0.2)))
+                                .background(Capsule().fill(Color.orange.opacity(0.2)))
                             }
                         }
                     }
                 }
                 
                 Section(header: Text("Not")) {
-                    TextField("Note", text: $note)
-                }
-                
-                Section(header: Text("Tarih")) {
-                    DatePicker("Date", selection: $date, displayedComponents: .date)
+                    TextField("Not (opsiyonel)", text: $note)
                 }
             }
-            .navigationTitle("New Expense")
+            .navigationTitle("Hızlı Ekle")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") { dismiss() }
+                    Button("İptal") { dismiss() }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") { saveExpense() }
+                    Button("Kaydet") { saveExpense() }
                 }
             }
         }
@@ -73,7 +68,7 @@ struct AddDailyExpenseView: View {
         expense.amount = Double(amount) ?? 0
         expense.category = category
         expense.note = note
-        expense.date = date
+        expense.date = Date() // bugün
         
         try? viewContext.save()
         dismiss()

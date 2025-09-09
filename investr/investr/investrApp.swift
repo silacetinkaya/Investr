@@ -5,6 +5,11 @@ struct InvestrApp: App {
     let persistenceController = PersistenceController.shared
     @AppStorage("hasOnboarded") var hasOnboarded: Bool = false
 
+    init() {
+        // Bildirim izni iste
+        NotificationManager.requestPermission()
+    }
+
     var body: some Scene {
         WindowGroup {
             if hasOnboarded {
@@ -17,6 +22,11 @@ struct InvestrApp: App {
                     FixedExpenseListView()
                         .tabItem {
                             Label("Fixed Expenses", systemImage: "list.bullet")
+                        }
+
+                    DailyExpenseListView()
+                        .tabItem {
+                            Label("Daily Expenses", systemImage: "calendar")
                         }
                 }
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)

@@ -39,6 +39,9 @@ struct OnboardingView: View {
 
         try? viewContext.save()
         hasOnboarded = true
+        
+        // ✅ Günlük hatırlatma bildirimi planla
+        NotificationManager.scheduleDailyReminder()
     }
 }
 
